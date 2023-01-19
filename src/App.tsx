@@ -1,23 +1,29 @@
-import './App.scss';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.scss";
+import FilmsListPage from "./pages/FilmsListPage";
+import HomePage from "./pages/HomePage";
+import PeoplesListPage from "./pages/PeoplesListPage";
+import PlanetsListPage from "./pages/PlanetsListPage";
+import SpeciesListPage from "./pages/SpeciesListPage";
+import StarshipsListPage from "./pages/StarshipsListPage";
+import VehiclesListPage from "./pages/VehiclesListPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header"> 
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/peoples" element={<PeoplesListPage />} />
+                    <Route path="/planets" element={<PlanetsListPage />} />
+                    <Route path="/starships" element={<StarshipsListPage />} />
+                    <Route path="/films" element={<FilmsListPage />} />
+                    <Route path="/vehicles" element={<VehiclesListPage />} />
+                    <Route path="/species" element={<SpeciesListPage />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
