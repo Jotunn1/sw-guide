@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.scss";
+import "./styles/main.scss";
+import Header from "./components/Header";
 import FilmsListPage from "./pages/FilmsListPage";
 import HomePage from "./pages/HomePage";
 import PeoplesListPage from "./pages/PeoplesListPage";
@@ -12,6 +13,7 @@ function App() {
     return (
         <div className="App">
             <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/peoples" element={<PeoplesListPage />} />
