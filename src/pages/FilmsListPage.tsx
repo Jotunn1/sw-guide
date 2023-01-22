@@ -13,6 +13,8 @@ const FilmsListPage = () => {
             .then((data) => setFilmsList(data.results));
     }, []);
 
+    console.log(filmsList);
+
     return (
         <>
             <h1 className="page-title">Films</h1>
@@ -22,6 +24,7 @@ const FilmsListPage = () => {
                         <FilmCard
                             title={film.title}
                             episodeId={+film.episode_id}
+                            release_date={film.release_date }
                             key={film.episode_id}
                         />
                     ))}
