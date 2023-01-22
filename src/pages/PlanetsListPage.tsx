@@ -10,8 +10,7 @@ const PlanetsListPage = () => {
     return (
         <>
             <h1 className="page-title">Planets</h1>
-
-            {response.count}
+            {response?.count}
         </>
     );
 };

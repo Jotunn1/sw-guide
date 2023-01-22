@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import FilmCard from "../components/cards/FilmCard";
 import { Film } from "../types";
 import { useFetch } from "../hooks/useFetch";
+import Preloader from "../components/Preloader";
 
 const FilmsListPage = () => {
     const filmsUrl = apiURL + "films/";
@@ -13,7 +14,12 @@ const FilmsListPage = () => {
     return (
         <>
             <h1 className="page-title">Films</h1>
-            {/* {isLoading && <p> Loading ...</p>} */}
+            {isLoading && (
+                <>
+                    <p> Loading ...</p>
+                    <Preloader />
+                </>
+            )}
             <ul className="cards-list films">
                 {response &&
                     response.results.map((film: Film) => (
