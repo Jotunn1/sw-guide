@@ -1,13 +1,22 @@
-@import './reset.scss', './variables.scss', './preloader.scss', './pages.scss';
+@import './reset.scss', './variables.scss', './preloader.scss', './pages.scss', './theme-toggle-button.scss';
 
 body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #161616;
+    transition: background-color .3s ease;
+    background-color: $snow-white;
 
     * {
-        color: #fff;
+        color: $black-color;
+    }
+
+    &.dark {
+        background-color: $dark-bg-color;
+
+        * {
+            color: #fff;
+        }
     }
 }
 
