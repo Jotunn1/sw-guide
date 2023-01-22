@@ -1,4 +1,5 @@
 import { apiURL } from "../api";
+import Preloader from "../components/Preloader";
 import { useFetch } from "../hooks/useFetch";
 
 const PlanetsListPage = () => {
@@ -9,6 +10,7 @@ const PlanetsListPage = () => {
 
     return (
         <>
+            {isLoading && <Preloader />}
             <h1 className="page-title">Planets</h1>
             {response?.count}
         </>
