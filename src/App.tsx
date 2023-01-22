@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/main.scss";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import FilmsListPage from "./pages/FilmsListPage";
 import HomePage from "./pages/HomePage";
 import PeoplesListPage from "./pages/PeoplesListPage";
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/vehicles" element={<VehiclesListPage />} />
                     <Route path="/species" element={<SpeciesListPage />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </div>
     );

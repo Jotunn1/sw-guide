@@ -13,18 +13,20 @@ const FilmsListPage = () => {
             .then((data) => setFilmsList(data.results));
     }, []);
 
-    console.log(filmsList);
     return (
-        <ul className="cards-list films">
-            {filmsList &&
-                filmsList.map((film: Film) => (
-                    <FilmCard
-                        title={film.title}
-                        episodeId={+film.episode_id}
-                        key={film.episode_id}
-                    />
-                ))}
-        </ul>
+        <>
+            <h1 className="page-title">Films</h1>
+            <ul className="cards-list films">
+                {filmsList &&
+                    filmsList.map((film: Film) => (
+                        <FilmCard
+                            title={film.title}
+                            episodeId={+film.episode_id}
+                            key={film.episode_id}
+                        />
+                    ))}
+            </ul>
+        </>
     );
 };
 

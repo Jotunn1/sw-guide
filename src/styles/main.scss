@@ -1,4 +1,4 @@
-@import './reset.scss';
+@import './reset.scss', './variables.scss';
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -36,15 +36,20 @@ header {
     }
 }
 
+.page-title {
+    margin: 40px 0;
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 10px;
+}
+
 .film-card {
     display: flex;
     flex-direction: column;
     gap: 25px;
-   
+    cursor: pointer;
 
     >.image-wrapper {
-        cursor: pointer;
-        border-radius: 25px;
         position: relative;
 
         &:before {
@@ -54,7 +59,7 @@ header {
         }
 
         >img {
-            border-radius: 25px;
+            // border-radius: 25px;
             width: 100%;
             height: 100%;
             position: absolute;
@@ -67,5 +72,44 @@ header {
 
     >h2 {
         text-align: center;
+    }
+}
+
+footer {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left-side {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .social-list {
+        display: flex;
+        gap: 10px;
+    }
+
+    .social-link {
+        display: flex;
+        gap: 5px;
+        transition: color $base-time $curve-1 ;
+
+        >svg {
+            fill: #fff;
+            width: 15px;
+            height: 15px;
+            transition: fill $base-time $curve-1 ;
+        }
+
+        &:hover {
+            color: $cta-color;
+
+            >svg {
+                fill: $cta-color;
+            }
+        }
     }
 }

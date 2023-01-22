@@ -1,7 +1,9 @@
 const PlanetsListPage = () => {
-  return (
-    <div>PlanetsListPage</div>
-  )
-}
+    return (
+        <>
+            <h1 className="page-title">Planets</h1>
+        </>
+    );
+};
 
-export default PlanetsListPage
+export default PlanetsListPage;
