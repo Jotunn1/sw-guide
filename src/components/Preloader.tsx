@@ -8,7 +8,7 @@ const Preloader = () => {
             <div className="ls-particles ls-part-5"></div>
             <div className="lightsaber ls-left ls-green"></div>
             <div className="lightsaber ls-right ls-red"></div>
-            <p>Loading ...</p>
+            <p>Loading</p>
         </div>
     );
 };
