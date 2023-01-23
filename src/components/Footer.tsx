@@ -12,7 +12,7 @@ const Footer = () => {
         },
         {
             title: "LinkedIn",
-            link: "www.linkedin.com/in/ihor-bozhuk-aba4451a8",
+            link: "https://www.linkedin.com/in/ihor-bozhuk-aba4451a8",
             icon: <LinkedInLogo />,
         },
         {
@@ -26,14 +26,17 @@ const Footer = () => {
             <div className="left-side">
                 My contacts :{" "}
                 <ul className="social-list">
-                    {socialList.map((el,index) => (
-                        <SocialLink key={index} title={el.title} link={el.link} icon={el.icon} />
+                    {socialList.map((el, index) => (
+                        <SocialLink
+                            key={index}
+                            title={el.title}
+                            link={el.link}
+                            icon={el.icon}
+                        />
                     ))}
                 </ul>
             </div>
-            <div className="right-side">
-                Developed by Ihor Bozhuk © 2023
-            </div>
+            <div className="right-side">Developed by Ihor Bozhuk © 2023</div>
         </footer>
     );
 };

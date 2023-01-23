@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { apiURL } from "../api";
 import { useEffect, useState } from "react";
 import { Film } from "../types";
+import Preloader from "../components/Preloader";
 
 const FilmPage = () => {
     const filmId: any = useParams().id;
@@ -23,41 +24,49 @@ const FilmPage = () => {
             .then((data) => setActiveFilm(data));
     }, []);
 
-    console.log(activeFilm);
+    const isObjectEmpty = (obj: {}) => {
+        return Object.keys(obj).length === 0;
+    };
 
     return (
         <div className="solo-page film-page">
-            <div className="image-wrapper left-side">
-                <img
-                    src={require(`../assets/images/films/${filmId}.jpg`)}
-                    alt={activeFilm?.title + " poster"}
-                />
-            </div>
-            <div className="right-side">
-                <h1>
-                    Episode {Episodes[filmId]} : {activeFilm?.title}
-                </h1>
+            {isObjectEmpty(activeFilm) ? (
+                <Preloader />
+            ) : (
+                <>
+                    <div className="image-wrapper left-side">
+                        <img
+                            src={require(`../assets/images/films/${filmId}.jpg`)}
+                            alt={activeFilm?.title + " poster"}
+                        />
+                    </div>
+                    <div className="right-side">
+                        <h1>
+                            Episode {Episodes[filmId]} : {activeFilm?.title}
+                        </h1>
 
-                <div className="short-info">
-                    <p>
-                        <span>Director</span>
-                        {activeFilm.director}
-                    </p>
-                    <p>
-                        <span>Release Date</span>
-                        {activeFilm.release_date as any}
-                    </p>
-                    <p>
-                        <span>Producer </span>
-                        {activeFilm.producer}
-                    </p>
-                </div>
+                        <div className="short-info">
+                            <p>
+                                <span>Director</span>
+                                {activeFilm.director}
+                            </p>
+                            <p>
+                                <span>Release Date</span>
+                                {activeFilm.release_date as any}
+                            </p>
+                            <p>
+                                <span>Producer </span>
+                                {activeFilm.producer}
+                            </p>
+                        </div>
 
-                <div className="about">
-                    <span>Opening Crawl</span>
-                    <p>{activeFilm.opening_crawl}</p>
-                </div>
-            </div>
+                        <div className="about">
+                            <span>Opening Crawl</span>
+                            <p>{activeFilm.opening_crawl}</p>
+                        </div>
+                    </div>{" "}
+                </>
+            )}
         </div>
     );
 };
