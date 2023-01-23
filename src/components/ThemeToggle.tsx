@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../features/theme/ThemeSlice";
+import { useDispatch } from "react-redux";
+import { changeToDark, changeToWhite } from "../features/theme/ThemeSlice";
 
 const ThemeToggle = () => {
     const [isToggled, setIsToggled] = useState(false);
+    const dispatch = useDispatch();
 
-    // const selectedTheme = useSelector(selectTheme);
-
-    // console.log(selectedTheme);
+    const toggleClickHandler = () => {
+        setIsToggled(!isToggled);
+        isToggled ? dispatch(changeToDark()) : dispatch(changeToWhite());
+    };
 
     return (
         <div className="wrapper">
             <div
                 className={`switch ${isToggled ? "left" : "right"}`}
-                onClick={() => setIsToggled(!isToggled)}
+                onClick={toggleClickHandler}
             >
                 <div className="bb8-head"></div>
                 <div className="bb8-body">

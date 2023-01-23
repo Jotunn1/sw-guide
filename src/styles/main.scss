@@ -9,6 +9,16 @@ body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 100px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: background-color $base-time $curve-2;
     background-color: $snow-white;
 
@@ -23,16 +33,6 @@ body {
             color: #fff;
         }
     }
-}
-
-.App {
-    margin: 0 auto;
-    max-width: 1280px;
-    padding: 0 100px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 header {

@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <header>
             <Link to={"/home"} className="logo">
-                Logo {location}
+                Logo
             </Link>
             {location !== "/home" && (
                 <ul>

@@ -10,10 +10,13 @@ import PlanetsListPage from "./pages/PlanetsListPage";
 import SpeciesListPage from "./pages/SpeciesListPage";
 import StarshipsListPage from "./pages/StarshipsListPage";
 import VehiclesListPage from "./pages/VehiclesListPage";
+import { useSelector } from "react-redux";
+import { selectTheme } from "./features/theme/ThemeSlice";
 
 function App() {
+    const selectedTheme = useSelector(selectTheme);
     return (
-        <div className="App">
+        <div className={`App ${selectedTheme}`}>
             <BrowserRouter>
                 <div className="container">
                     <Header />
