@@ -1,13 +1,19 @@
 import { useParams } from "react-router-dom";
 import { apiURL } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Film } from "../types";
 import Preloader from "../components/Preloader";
+import { useSelector } from "react-redux";
+import { selectActiveFilm, setActiveFilm } from "../features/theme/FilmsSlice";
+import { useDispatch } from "react-redux";
+import { useFetch } from "../hooks/useFetch";
 
 const FilmPage = () => {
     const filmId: any = useParams().id;
-    const filmsUrl = apiURL + "films/" + filmId;
-    const [activeFilm, setActiveFilm] = useState({} as Film);
+    const filmUrl = apiURL + "films/" + filmId;
+    const { response, isLoading } = useFetch(filmUrl);
+    const activeFilm = useSelector(selectActiveFilm);
+    const dispatch = useDispatch();
 
     enum Episodes {
         I = 4,
@@ -19,18 +25,14 @@ const FilmPage = () => {
     }
 
     useEffect(() => {
-        fetch(filmsUrl)
-            .then((res) => res.json())
-            .then((data) => setActiveFilm(data));
-    }, []);
-
-    const isObjectEmpty = (obj: {}) => {
-        return Object.keys(obj).length === 0;
-    };
+        if (response !== undefined) {
+            dispatch(setActiveFilm(response));
+        }
+    }, [isLoading]);
 
     return (
         <div className="solo-page film-page">
-            {isObjectEmpty(activeFilm) ? (
+            {isLoading ? (
                 <Preloader />
             ) : (
                 <>
