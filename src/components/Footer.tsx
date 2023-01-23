@@ -22,7 +22,7 @@ const Footer = () => {
         },
     ];
     return (
-        <footer>
+        <footer className="container">
             <div className="left-side">
                 My contacts :{" "}
                 <ul className="social-list">
