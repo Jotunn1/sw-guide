@@ -12,6 +12,10 @@ import StarshipsListPage from "./pages/StarshipsListPage";
 import VehiclesListPage from "./pages/VehiclesListPage";
 import { useSelector } from "react-redux";
 import { selectTheme } from "./features/theme/ThemeSlice";
+import store from "./store";
+import { saveState } from "./utils/storage";
+
+store.subscribe(() => saveState(store.getState()));
 
 function App() {
     const selectedTheme = useSelector(selectTheme);
