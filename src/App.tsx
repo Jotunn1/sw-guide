@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import FilmsListPage from "./pages/FilmsListPage";
 import FilmPage from "./pages/FilmPage";
 import HomePage from "./pages/HomePage";
-import PeoplesListPage from "./pages/PeoplesListPage";
+import CharactersListPage from "./pages/CharactersListPage";
 import PlanetsListPage from "./pages/PlanetsListPage";
 import SpeciesListPage from "./pages/SpeciesListPage";
 import StarshipsListPage from "./pages/StarshipsListPage";
@@ -19,7 +19,10 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path="/home" element={<HomePage />} />
-                        <Route path="/peoples" element={<PeoplesListPage />} />
+                        <Route
+                            path="/characters"
+                            element={<CharactersListPage />}
+                        />
                         <Route path="/planets" element={<PlanetsListPage />} />
                         <Route
                             path="/starships"

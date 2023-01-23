@@ -1,4 +1,4 @@
-const PeoplesListPage = () => {
+const CharactersListPage = () => {
     return (
         <>
             <h1 className="page-title">Characters</h1>
@@ -6,4 +6,4 @@ const PeoplesListPage = () => {
     );
 };
 
-export default PeoplesListPage;
+export default CharactersListPage;
