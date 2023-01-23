@@ -26,7 +26,7 @@ body {
         max-width: 1280px;
     }
 
-    * {
+    *:not(.category-title) {
         color: $black-color;
     }
 
@@ -34,7 +34,7 @@ body {
         background-color: $dark-bg-color;
 
         * {
-            color: #fff;
+            color: $snow-white;
         }
     }
 }
@@ -278,6 +278,7 @@ footer {
         letter-spacing: 1px;
         font-family: 'star-jedi';
         transition: color $base-time $curve-2;
+        color: $snow-white;
     }
 
     &:hover {
