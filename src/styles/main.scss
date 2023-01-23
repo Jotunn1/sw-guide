@@ -30,11 +30,19 @@ body {
         color: $black-color;
     }
 
+    svg {
+        fill: $black-color;
+    }
+
     &.dark {
         background-color: $dark-bg-color;
 
         * {
             color: $snow-white;
+        }
+
+        svg {
+            fill: $snow-white;
         }
     }
 }
@@ -73,9 +81,7 @@ header {
 
 .page-title {
     margin: 40px 0;
-    // text-align: center;
     font-size: 50px;
-    // letter-spacing: 10px;
 }
 
 .film-card {
@@ -130,7 +136,7 @@ header {
 }
 
 footer {
-    margin: 40px 0 30px;
+    padding: 40px 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,7 +158,6 @@ footer {
         transition: color $base-time $curve-1 ;
 
         >svg {
-            fill: #fff;
             width: 15px;
             height: 15px;
             transition: fill $base-time $curve-1 ;
