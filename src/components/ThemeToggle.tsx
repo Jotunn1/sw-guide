@@ -1,7 +1,13 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../features/theme/ThemeSlice";
 
 const ThemeToggle = () => {
     const [isToggled, setIsToggled] = useState(false);
+
+    // const selectedTheme = useSelector(selectTheme);
+
+    // console.log(selectedTheme);
 
     return (
         <div className="wrapper">
