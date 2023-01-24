@@ -57,6 +57,33 @@ header {
         display: flex;
         gap: 20px;
     }
+
+    .header-link {
+        position: relative;
+        overflow-y: auto;
+        height: 22px;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+
+        >.line {
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            background-color: $sw-yellow-color;
+            transform: translateX(-100%);
+            transition: transform .3s ease;
+        }
+
+        &.active,
+        &:hover {
+            >.line {
+                transform: translateX(0);
+            }
+        }
+    }
 }
 
 .cards-list {

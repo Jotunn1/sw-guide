@@ -1,9 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
+import HeaderLink from "./HeaderLink";
 import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
     const location = useLocation().pathname;
-
+    const pages = [
+        "/films",
+        "/planets",
+        "/characters",
+        "/vehicles",
+        "/starships",
+        "/species",
+    ];
     return (
         <header>
             <Link to={"/home"} className="logo">
@@ -11,11 +19,9 @@ const Header = () => {
             </Link>
             {location !== "/home" && (
                 <ul>
-                    <Link to={"/films"}> Films</Link>
-                    <Link to={"/planets"}> Planets</Link>
-                    <Link to={"/peoples"}> Peoples</Link>
-                    <Link to={"/vehicles"}> Vehicles</Link>
-                    <Link to={"/planets"}> Planets</Link>
+                    {pages.map((el) => (
+                        <HeaderLink linkTo={el} isActive={location === el}/>
+                    ))}
                 </ul>
             )}
 
