@@ -7,3 +7,13 @@ $sw-yellow-color: #FFE81F;
 $base-time: 0.3s;
 $curve-1: ease-in;
 $curve-2: ease;
+
+.App {
+    --card-border-color: rgba(255, 255, 255, 0.3);
+    --card-border-hover-color: rgba(255, 255, 255, 0.6);
+
+    &.white {
+        --card-border-color: rgba(0, 0, 0, 0.3);
+        --card-border-hover-color: rgba(0, 0, 0, 0.6);
+    }
+}

@@ -116,15 +116,17 @@ header {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid;
+    border-color: var(--card-border-color);
     border-radius: 25px;
-    $transition-props: border,
-    transform;
-    transition: $transition-props $base-time $curve-2;
+    transition-property: transform,
+        border-color;
+    transition-duration: $base-time ;
+    transition-timing-function: $curve-2 ;
 
     &:hover {
         transform: scale(1.05);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-color: var(--card-border-hover-color);
 
         h2 {
             color: $sw-yellow-color;
@@ -140,7 +142,6 @@ header {
         >img {
             border-top-right-radius: 25px;
             border-top-left-radius: 25px;
-
         }
     }
 
