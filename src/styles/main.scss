@@ -74,7 +74,7 @@ header {
             width: 100%;
             background-color: $sw-yellow-color;
             transform: translateX(-100%);
-            transition: transform .3s ease;
+            transition: transform $base-time $curve-1;
         }
 
         &.active,
