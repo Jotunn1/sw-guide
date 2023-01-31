@@ -1,4 +1,4 @@
-@import './reset.scss', './variables.scss', './preloader.scss', './pages.scss', './theme-toggle-button.scss';
+@import './reset.scss', './variables.scss', './preloader.scss', './pages.scss', './cards.scss', './theme-toggle-button.scss';
 
 @font-face {
     font-family: 'star-jedi';
@@ -94,6 +94,10 @@ header {
         grid-template-columns: repeat(4, 1fr);
     }
 
+    &.planets {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
     >.film-card {
         opacity: 0;
         animation: show .5s $curve-2 forwards;
@@ -106,62 +110,6 @@ header {
     }
 }
 
-.page-title {
-    margin: 40px 0;
-    font-size: 50px;
-}
-
-.film-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    border: 1px solid;
-    border-color: var(--card-border-color);
-    border-radius: 25px;
-    transition-property: transform,
-        border-color;
-    transition-duration: $base-time ;
-    transition-timing-function: $curve-2 ;
-
-    &:hover {
-        transform: scale(1.05);
-        border-color: var(--card-border-hover-color);
-
-        h2 {
-            color: $sw-yellow-color;
-        }
-    }
-
-    .image-wrapper {
-
-        &:before {
-            padding-top: 120%;
-        }
-
-        >img {
-            border-top-right-radius: 25px;
-            border-top-left-radius: 25px;
-        }
-    }
-
-    h2,
-    h3 {
-        text-align: center;
-    }
-
-    h2 {
-        margin: 20px 30px 0;
-        transition: color $base-time $curve-2;
-        font-size: 14px;
-    }
-
-    h3 {
-        opacity: 0.7;
-        font-size: 13px;
-        margin: 10px 0 20px;
-    }
-}
 
 footer {
     padding: 40px 0 30px;

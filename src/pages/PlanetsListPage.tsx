@@ -7,11 +7,11 @@ import {
     setPlanetsList,
 } from "../features/Planets/PlanetsSlice";
 import { useEffect } from "react";
+import PlanetCard from "../components/cards/PlanetCard";
 
 const PlanetsListPage = () => {
     const planetsUrl = apiURL + "planets/";
-    const { response, error, isLoading } = useFetch(planetsUrl);
-
+    const { response, isLoading } = useFetch(planetsUrl);
     const planetsList = useSelector(selectPlanetsList);
     const dispatch = useDispatch();
 
@@ -30,13 +30,21 @@ const PlanetsListPage = () => {
 
     return (
         <>
-            {isLoading && <Preloader />}
+            {" "}
             <h1 className="page-title">Planets</h1>
-            {planetsList.map((el: any) => (
-                <h2>
-                    {el.name} {extractId(el.url)}
-                </h2>
-            ))}
+            {isLoading ? (
+                <Preloader />
+            ) : (
+                <ul className="cards-list planets">
+                    {planetsList.map((el: any) => (
+                        <PlanetCard
+                            key={extractId(el.url)}
+                            name={el.name}
+                            planetId={extractId(el.url)}
+                        />
+                    ))}
+                </ul>
+            )}
         </>
     );
 };

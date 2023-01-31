@@ -2,24 +2,21 @@ import { Link } from "react-router-dom";
 
 const PlanetCard = (props: PlanetCardProps) => {
     return (
-        <Link to={`/films/${props.episodeId}`} className="card film-card">
-            <div className="film-title">
-                <div className="image-wrapper">
-                    <img
-                        src={require(`../../assets/images/films/${props.episodeId}.jpg`)}
-                        alt={props.title + " poster"}
-                    />
-                </div>
+        <Link to={`/planets/${props.planetId}`} className="card planet-card">
+            <div className="image-wrapper">
+                <img
+                    src={require(`../../assets/images/planets/${props.planetId}.jpg`)}
+                    alt={props.name + " planet"}
+                />
             </div>
-            <h3> {props.release_date.substring(0, 4)}</h3>
+            <h2>{props.name}</h2>
         </Link>
     );
 };
 
 type PlanetCardProps = {
-    title: string;
-    episodeId: number;
-    release_date: any;
+    name: string;
+    planetId: number;
 };
 
 export default PlanetCard;

@@ -6,11 +6,13 @@ export type TApiResponse = {
     response: any;
     error: any;
     isLoading: Boolean;
+    nextPage: any;
 };
 
 export const useFetch = (url: string): TApiResponse => {
     const [status, setStatus] = useState<Number>(0);
     const [statusText, setStatusText] = useState<String>("");
+    const [nextPage, setNextPage] = useState<String>("");
     const [response, setResponse] = useState<any>();
     const [error, setError] = useState<any>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,6 +22,7 @@ export const useFetch = (url: string): TApiResponse => {
         try {
             const apiResponse = await fetch(url);
             const json = await apiResponse.json();
+            if (json.next) setNextPage(json.next);
             setStatus(apiResponse.status);
             setStatusText(apiResponse.statusText);
             setResponse(json);
@@ -33,5 +36,5 @@ export const useFetch = (url: string): TApiResponse => {
         getAPIData();
     }, []);
 
-    return { status, statusText, response, error, isLoading };
+    return { status, statusText, response, error, isLoading, nextPage };
 };
