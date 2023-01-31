@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { selectTheme } from "./features/theme/ThemeSlice";
 import store from "./store";
 import { saveState } from "./utils/storage";
+import PlanetPage from "./pages/PlanetPage";
 
 store.subscribe(() => saveState(store.getState()));
 
@@ -31,6 +32,7 @@ function App() {
                             element={<CharactersListPage />}
                         />
                         <Route path="/planets" element={<PlanetsListPage />} />
+                        <Route path="/planets/:id" element={<PlanetPage />} />
                         <Route
                             path="/starships"
                             element={<StarshipsListPage />}

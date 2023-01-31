@@ -16,7 +16,7 @@ export const planetsSlice = createSlice({
     initialState,
     reducers: {
         setPlanetsList: (state, action) => {
-            console.log(action.payload, "planets from redux");
+            // console.log(action.payload, "planets from redux");
             state.planetsList = [...action.payload];
         },
         setActivePlanet: (state, action) => {

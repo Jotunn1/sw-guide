@@ -168,63 +168,6 @@ footer {
     }
 }
 
-.film-page {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 4fr 8fr;
-    gap: 40px;
-
-    .image-wrapper {
-        >img {
-            border-radius: 25px;
-
-        }
-
-        &:before {
-            padding-top: 120%;
-        }
-    }
-
-    .right-side {
-        >h1 {
-            font-size: 40px;
-        }
-
-        >.short-info {
-            margin: 30px 0;
-            display: flex;
-            justify-content: space-between;
-
-            >p {
-                font-size: 14px;
-                display: flex;
-                gap: 10px;
-                flex-direction: column;
-
-                >span {
-                    font-size: 13px;
-                    opacity: 0.7;
-                }
-            }
-        }
-
-        >.about {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            >p {
-                line-height: 23px;
-                font-size: 14px;
-            }
-
-            >span {
-                font-size: 13px;
-                opacity: 0.7;
-            }
-        }
-    }
-}
 
 .categories-list {
     display: grid;
@@ -280,5 +223,15 @@ footer {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes textAppeareance {
+    0% {
+        transform: translateY(150%);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

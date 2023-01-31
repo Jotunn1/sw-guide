@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
 import { apiURL } from "../api";
 import { useEffect } from "react";
-import { Film } from "../types";
 import Preloader from "../components/Preloader";
 import { useSelector } from "react-redux";
 import { selectActiveFilm, setActiveFilm } from "../features/Films/FilmsSlice";
 import { useDispatch } from "react-redux";
 import { useFetch } from "../hooks/useFetch";
+import { Film } from "../types";
 
 const FilmPage = () => {
     const filmId: any = useParams().id;
     const filmUrl = apiURL + "films/" + filmId;
     const { response, isLoading } = useFetch(filmUrl);
-    const activeFilm = useSelector(selectActiveFilm);
+    const activeFilm:Film = useSelector(selectActiveFilm);
     const dispatch = useDispatch();
 
     enum Episodes {
