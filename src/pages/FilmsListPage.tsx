@@ -4,9 +4,8 @@ import FilmCard from "../components/cards/FilmCard";
 import { Film } from "../types";
 import { useFetch } from "../hooks/useFetch";
 import Preloader from "../components/Preloader";
-import { useSelector } from "react-redux";
-import { selectFilmsList, setFilmsList } from "../features/theme/FilmsSlice";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { selectFilmsList, setFilmsList } from "../features/Films/FilmsSlice";
 
 const FilmsListPage = () => {
     const filmsUrl = apiURL + "films/";

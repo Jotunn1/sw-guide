@@ -16,7 +16,6 @@ export const filmsSlice = createSlice({
     initialState,
     reducers: {
         setFilmsList: (state, action) => {
-            console.log(action.payload, " payload from redux");
             state.filmsList = [...action.payload];
         },
         setActiveFilm: (state, action) => {

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Film } from "../types";
 import Preloader from "../components/Preloader";
 import { useSelector } from "react-redux";
-import { selectActiveFilm, setActiveFilm } from "../features/theme/FilmsSlice";
+import { selectActiveFilm, setActiveFilm } from "../features/Films/FilmsSlice";
 import { useDispatch } from "react-redux";
 import { useFetch } from "../hooks/useFetch";
 
