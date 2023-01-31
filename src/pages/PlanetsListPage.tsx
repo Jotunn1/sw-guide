@@ -6,13 +6,22 @@ const PlanetsListPage = () => {
     const planetsUrl = apiURL + "planets/";
     const { response, error, isLoading } = useFetch(planetsUrl);
 
-    console.log(response);
+    const extractId = (url: any) => {
+        const idRegExp = /\/([0-9]*)\/$/;
+        return url.match(idRegExp)[1];
+    };
+
+    console.log(response?.results);
 
     return (
         <>
             {isLoading && <Preloader />}
             <h1 className="page-title">Planets</h1>
-            {response?.count}
+            {response?.results.map((el: any) => (
+                <h2>
+                    {el.name} {extractId(el.url)}
+                </h2>
+            ))}
         </>
     );
 };

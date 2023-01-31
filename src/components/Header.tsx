@@ -12,7 +12,7 @@ const Header = () => {
         "/starships",
         "/species",
     ];
-    
+
     return (
         <header>
             <Link to={"/"} className="logo">
@@ -20,8 +20,12 @@ const Header = () => {
             </Link>
             {location !== "/" && (
                 <ul>
-                    {pages.map((el) => (
-                        <HeaderLink linkTo={el} isActive={location.includes(el)} />
+                    {pages.map((el, index) => (
+                        <HeaderLink
+                            key={index}
+                            linkTo={el}
+                            isActive={location.includes(el)}
+                        />
                     ))}
                 </ul>
             )}

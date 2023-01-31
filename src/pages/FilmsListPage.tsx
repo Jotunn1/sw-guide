@@ -19,7 +19,7 @@ const FilmsListPage = () => {
             dispatch(setFilmsList(response.results));
         }
     }, [isLoading]);
-
+    // console.log(response);
     return (
         <>
             <h1 className="page-title">Films</h1>
