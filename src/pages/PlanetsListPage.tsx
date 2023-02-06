@@ -11,7 +11,7 @@ import PlanetCard from "../components/cards/PlanetCard";
 
 const PlanetsListPage = () => {
     const planetsUrl = apiURL + "planets/";
-    const { response, isLoading } = useFetch(planetsUrl);
+    const { response, isLoading, nextPage } = useFetch(planetsUrl);
     const planetsList = useSelector(selectPlanetsList);
     const dispatch = useDispatch();
 
@@ -35,15 +35,19 @@ const PlanetsListPage = () => {
             {isLoading ? (
                 <Preloader />
             ) : (
-                <ul className="cards-list planets">
-                    {planetsList.map((el: any) => (
-                        <PlanetCard
-                            key={extractId(el.url)}
-                            name={el.name}
-                            planetId={extractId(el.url)}
-                        />
-                    ))}
-                </ul>
+                <>
+                    <ul className="cards-list planets">
+                        {planetsList.map((el: any) => (
+                            <PlanetCard
+                                key={extractId(el.url)}
+                                name={el.name}
+                                planetId={extractId(el.url)}
+                            />
+                        ))}
+                    </ul>
+
+                    <h2>{nextPage}</h2>
+                </>
             )}
         </>
     );

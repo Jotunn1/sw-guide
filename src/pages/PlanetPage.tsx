@@ -21,7 +21,7 @@ const PlanetPage = () => {
     useEffect(() => {
         if (response !== undefined) {
             dispatch(setActivePlanet(response));
-            console.log(activePlanet, "active planet");
+            console.log(activePlanet);
         }
     }, [isLoading]);
 

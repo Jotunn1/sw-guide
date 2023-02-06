@@ -12,11 +12,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <React.StrictMode>
-        {/* <QueryClientProvider client={queryClient}> */}
-            <Provider store={store}>
-                <App />
-            </Provider>
-        {/* </QueryClientProvider> */}
-    </React.StrictMode>
+    // <React.StrictMode>
+    <>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </>
+    // </React.StrictMode>
 );

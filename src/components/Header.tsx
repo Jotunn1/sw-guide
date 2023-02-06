@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import HeaderLink from "./HeaderLink";
 import ThemeToggle from "./ThemeToggle";
+import { ReactComponent as SWLogo } from "../assets/images/sw-logo.svg";
 
 const Header = () => {
     const location = useLocation().pathname;
@@ -16,7 +17,7 @@ const Header = () => {
     return (
         <header>
             <Link to={"/"} className="logo">
-                Logo
+                <SWLogo />
             </Link>
             {location !== "/" && (
                 <ul>
