@@ -152,6 +152,11 @@ footer {
 
 .image-wrapper {
     position: relative;
+    background-color: rgba(190, 184, 184, 0.6);
+
+    &.loaded>img {
+        opacity: 1;
+    }
 
     &:before {
         display: block;
@@ -168,7 +173,7 @@ footer {
         bottom: 0;
         object-fit: cover;
         opacity: 0;
-        transform: opacity .1s;
+        transition: opacity .3s ease-in;
     }
 }
 
