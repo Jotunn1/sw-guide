@@ -2,10 +2,7 @@
     width: 80px;
     height: 40px;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
 
     >p {
         position: absolute;
@@ -13,6 +10,19 @@
         text-align: center;
         font-family: 'star-jedi';
     }
+
+    &.center {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+}
+
+.load-text {
+    margin-top: 50px;
+    font-size: 32px;
+    text-align: center;
+    font-family: 'star-jedi';
 }
 
 .lightsaber {
@@ -75,49 +85,49 @@
 
 
 .lightsaber.ls-green:before {
-    -webkit-animation: showlightgreen 2s ease-in-out infinite 1s;
-    animation: showlightgreen 2s ease-in-out infinite 1s;
+    -webkit-animation: showlightgreen 1s ease-in-out infinite .3s;
+    animation: showlightgreen 1s ease-in-out infinite .3s;
 }
 
 .lightsaber.ls-red:before {
-    -webkit-animation: showlightred 2s ease-in-out infinite 1s;
-    animation: showlightred 2s ease-in-out infinite 1s;
+    -webkit-animation: showlightred 1s ease-in-out infinite .3s;
+    animation: showlightred 1s ease-in-out infinite .3s;
 }
 
 
 .lightsaber.ls-left {
-    -webkit-animation: fightleft 2s ease-in-out infinite 1s;
-    animation: fightleft 2s ease-in-out infinite 1s;
+    -webkit-animation: fightleft 1.5s ease-in-out infinite .5s;
+    animation: fightleft 1.5s ease-in-out infinite .5s;
 }
 
 .lightsaber.ls-right {
-    -webkit-animation: fightright 2s ease-in-out infinite 1s;
-    animation: fightright 2s ease-in-out infinite 1s;
+    -webkit-animation: fightright 1.5s ease-in-out infinite .5s;
+    animation: fightright 1.5s ease-in-out infinite .5s;
 }
 
 .ls-particles.ls-part-1 {
-    -webkit-animation: particles1 2s ease-out infinite 1s;
-    animation: particles1 2s ease-out infinite 1s;
+    -webkit-animation: particles1 1.5s ease-out infinite .5s;
+    animation: particles1 1.5s ease-out infinite .5s;
 }
 
 .ls-particles.ls-part-2 {
-    -webkit-animation: particles2 2s ease-out infinite 1s;
-    animation: particles2 2s ease-out infinite 1s;
+    -webkit-animation: particles2 1.5s ease-out infinite .5s;
+    animation: particles2 1.5s ease-out infinite .5s;
 }
 
 .ls-particles.ls-part-3 {
-    -webkit-animation: particles3 2s ease-out infinite 1s;
-    animation: particles3 2s ease-out infinite 1s;
+    -webkit-animation: particles3 1.5s ease-out infinite .5s;
+    animation: particles3 1.5s ease-out infinite .5s;
 }
 
 .ls-particles.ls-part-4 {
-    -webkit-animation: particles4 2s ease-out infinite 1s;
-    animation: particles4 2s ease-out infinite 1s;
+    -webkit-animation: particles4 1.5s ease-out infinite .5s;
+    animation: particles4 1.5s ease-out infinite .5s;
 }
 
 .ls-particles.ls-part-5 {
-    -webkit-animation: particles5 2s ease-out infinite 1s;
-    animation: particles5 2s ease-out infinite 1s;
+    -webkit-animation: particles5 1.5s ease-out infinite .5s;
+    animation: particles5 1.5s ease-out infinite .5s;
 }
 
 @-webkit-keyframes showlightgreen {
