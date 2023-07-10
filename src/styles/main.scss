@@ -166,6 +166,9 @@ footer {
         right: 0;
         left: 0;
         bottom: 0;
+        object-fit: cover;
+        opacity: 0;
+        transform: opacity .1s;
     }
 }
 

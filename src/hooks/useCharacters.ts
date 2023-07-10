@@ -9,14 +9,15 @@ export const useCharacters = () => {
       fetch(`${apiURL}people/?page=${pageParam}`).then((res) => res.json()),
     {
       getNextPageParam: (lastPage) => {
-        // console.log(lastPage, "lastPage");
-        const previousPage = lastPage.previous
-          ? +lastPage.previous.split("=")[1]
-          : 0;
-        const currentPage = previousPage + 1;
+        if (lastPage.next) {
+          const previousPage = lastPage.previous
+            ? +lastPage.previous.split("=")[1]
+            : 0;
+          const currentPage = previousPage + 1;
 
-        if (currentPage === lastPage.pages) return false;
-        return currentPage + 1;
+          if (currentPage === lastPage.pages) return false;
+          return currentPage + 1;
+        }
       },
     }
   );

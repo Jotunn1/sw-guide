@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
+import ImageComponent from "../common/ImageComponent";
 
 const CharacterCard = (props: CharacterCardProps) => {
   return (
     <Link to={`/planets/${props.id}`} className="card planet-card">
-      <div className="image-wrapper">
-        <img
-          src={require(`../../assets/images/characters/${props.id}.jpg`)}
-          alt={props.name}
-        />
-      </div>
+      <ImageComponent src={`characters/${props.id}.jpg`} alt={props.name} />
       <h2>{props.name}</h2>
     </Link>
   );
