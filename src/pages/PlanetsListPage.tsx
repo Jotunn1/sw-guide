@@ -1,3 +1,4 @@
+// import { useState } from "react";
 import { apiURL } from "../api";
 import Preloader from "../components/Preloader";
 import { useFetch } from "../hooks/useFetch";
@@ -18,6 +19,7 @@ const PlanetsListPage = () => {
     useEffect(() => {
         if (response !== undefined) {
             dispatch(setPlanetsList(response.results));
+            console.log(response);
         }
     }, [isLoading]);
 
@@ -25,6 +27,26 @@ const PlanetsListPage = () => {
         const idRegExp = /\/([0-9]*)\/$/;
         return url.match(idRegExp)[1];
     };
+
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //       if (
+    //         window.innerHeight + window.scrollY >= document.body.offsetHeight
+    //       ) {
+    //         const nextPage = page + 1;
+    //         fetchNextCharacters(nextPage).then((newCharacters) => {
+    //           setCharacters((prevCharacters) => [
+    //             ...prevCharacters,
+    //             ...newCharacters,
+    //           ]);
+    //           setPage(nextPage);
+    //         });
+    //       }
+    //     };
+
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => window.removeEventListener('scroll', handleScroll);
+    //   }, [characters, page]);
 
     // console.log(response?.results);
 
