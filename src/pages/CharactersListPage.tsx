@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useCharacters } from "../hooks/useCharacters";
-// import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import { Character } from "../types";
 import CharacterCard from "../components/cards/CharacterCard";
@@ -17,18 +17,20 @@ const CharactersListPage = () => {
     <>
       <h1 className="page-title">Characters</h1>
       {isLoading && <Preloader />}
-      <ul className="cards-list characters">
-        {!!characters &&
-          characters.results.map((el: Character, index: number) => (
-            <CharacterCard name={el.name} id={index + 1} />
-          ))}
-      </ul>
-      <button
-        onClick={() => fetchNextPage()}
-        // disabled={!data.pageParams.length}
+      <InfiniteScroll
+        dataLength={characters ? characters.results.length : 0}
+        next={() => fetchNextPage()}
+        hasMore={!!hasNextPage}
+        loader={<p className="load-text">Loading more ...</p>}
+        style={{ overflow: "visible" }}
       >
-        Load More
-      </button>
+        <ul className="cards-list characters">
+          {!!characters &&
+            characters.results.map((el: Character, index: number) => (
+              <CharacterCard name={el.name} id={index + 1} />
+            ))}
+        </ul>
+      </InfiniteScroll>
     </>
   );
 };
