@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import placeholder from "../../assets/images/placeholder.jpg";
 import cn from "classnames";
 
@@ -7,22 +7,22 @@ const ImageComponent: React.FC<{ src: string; alt: string }> = ({
   alt,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [image, setImage] = useState("");
 
-  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    const imageElement = event.target as HTMLImageElement;
-    imageElement.src = placeholder;
-  };
-
-  const handleImageLoad = () => setIsLoaded(true);
+  useEffect(() => {
+    try {
+      const downloadedImage = require(`../../assets/images/${src}`);
+      setIsLoaded(true);
+      setImage(downloadedImage);
+    } catch (err) {
+      setImage(placeholder);
+      setIsLoaded(true);
+    }
+  }, []);
 
   return (
     <div className={cn("image-wrapper", isLoaded && "loaded")}>
-      <img
-        src={require(`../../assets/images/${src}`)}
-        alt={alt}
-        onError={handleImageError}
-        onLoad={handleImageLoad}
-      />
+      <img src={image} alt={alt} />
     </div>
   );
 };
