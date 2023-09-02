@@ -6,7 +6,6 @@ const ImageComponent: React.FC<{ src: string; alt: string }> = ({
   src,
   alt,
 }) => {
-  const assetPath = `../../assets/images/${src}`;
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
@@ -19,7 +18,7 @@ const ImageComponent: React.FC<{ src: string; alt: string }> = ({
   return (
     <div className={cn("image-wrapper", isLoaded && "loaded")}>
       <img
-        src={assetPath}
+        src={require(`../../assets/images/${src}`)}
         alt={alt}
         onError={handleImageError}
         onLoad={handleImageLoad}

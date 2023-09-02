@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
+import ImageComponent from "../common/ImageComponent";
 
 const CategoryCard = ({ categoryName }: { categoryName: string }) => {
   return (
     <Link to={`/${categoryName}`} className="category-card">
-      <div className="image-wrapper">
-        <img
-          src={require(`../../assets/images/categories/${categoryName}.jpg`)}
-          alt={categoryName}
-        />
-      </div>
+      <ImageComponent
+        src={`categories/${categoryName}.jpg`}
+        alt={categoryName}
+      />
       <h2 className="category-title">{categoryName}</h2>
     </Link>
   );

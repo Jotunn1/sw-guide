@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ImageComponent from "../common/ImageComponent";
 
 type PlanetCardProps = {
   name: string;
@@ -8,12 +9,7 @@ type PlanetCardProps = {
 const PlanetCard = ({ name, planetId }: PlanetCardProps) => {
   return (
     <Link to={`/planets/${planetId}`} className="card planet-card">
-      <div className="image-wrapper">
-        <img
-          src={require(`../../assets/images/planets/${planetId}.jpg`)}
-          alt={name + " planet"}
-        />
-      </div>
+      <ImageComponent src={`planets/${planetId}.jpg`} alt={name + " planet"} />
       <h2>{name}</h2>
     </Link>
   );

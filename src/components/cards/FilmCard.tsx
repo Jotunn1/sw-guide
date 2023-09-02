@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import ImageComponent from "../common/ImageComponent";
 
-type filmCardProps = {
+type FilmCardProps = {
   title: string;
   episodeId: number;
   release_date: any;
@@ -15,16 +16,14 @@ enum Episodes {
   VI = 3,
 }
 
-const FilmCard = ({ title, episodeId, release_date }: filmCardProps) => {
+const FilmCard = ({ title, episodeId, release_date }: FilmCardProps) => {
   return (
     <Link to={`/films/${episodeId}`} className="card film-card">
       <div className="film-title">
-        <div className="image-wrapper">
-          <img
-            src={require(`../../assets/images/films/${episodeId}.jpg`)}
-            alt={title + " poster"}
-          />
-        </div>
+        <ImageComponent
+          src={`films/${episodeId}.jpg`}
+          alt={title + " poster"}
+        />
         <h2>
           Episode {Episodes[episodeId]} : {title}
         </h2>
