@@ -14,12 +14,11 @@ const FilmsListPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(filmsList, "filmsList");
     if (response !== undefined && filmsList.length === 0) {
       dispatch(setFilmsList(response.results));
     }
   }, [isLoading]);
-  // console.log(response);
+
   return (
     <>
       <h1 className="page-title">Films</h1>

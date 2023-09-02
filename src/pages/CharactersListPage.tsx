@@ -9,27 +9,29 @@ const CharactersListPage = () => {
     useCharacters();
 
   const isLoading = status === "loading";
-
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;
 
   return (
     <>
       <h1 className="page-title">Characters</h1>
-      {isLoading && <Preloader />}
-      <InfiniteScroll
-        dataLength={characters ? characters.results.length : 0}
-        next={() => fetchNextPage()}
-        hasMore={!!hasNextPage}
-        loader={<p className="load-text">Loading more ...</p>}
-        style={{ overflow: "visible" }}
-      >
-        <ul className="cards-list characters">
-          {!!characters &&
-            characters.results.map((el: Character, index: number) => (
-              <CharacterCard name={el.name} id={index + 1} key={index} />
-            ))}
-        </ul>
-      </InfiniteScroll>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <InfiniteScroll
+          dataLength={characters ? characters.results.length : 0}
+          next={() => fetchNextPage()}
+          hasMore={!!hasNextPage}
+          loader={<p className="load-text">Loading more ...</p>}
+          style={{ overflow: "visible" }}
+        >
+          <ul className="cards-list characters">
+            {!!characters &&
+              characters.results.map((el: Character, index: number) => (
+                <CharacterCard name={el.name} id={index + 1} key={index} />
+              ))}
+          </ul>
+        </InfiniteScroll>
+      )}
     </>
   );
 };

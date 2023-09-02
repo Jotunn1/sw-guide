@@ -1,78 +1,46 @@
-// import { useState } from "react";
-import { apiURL } from "../api";
 import Preloader from "../components/Preloader";
-import { useFetch } from "../hooks/useFetch";
-import { useSelector, useDispatch } from "react-redux";
-import {
-    selectPlanetsList,
-    setPlanetsList,
-} from "../features/Planets/PlanetsSlice";
-import { useEffect } from "react";
 import PlanetCard from "../components/cards/PlanetCard";
+import { usePlanets } from "../hooks/usePlanets";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PlanetsListPage = () => {
-    const planetsUrl = apiURL + "planets/";
-    const { response, isLoading, nextPage } = useFetch(planetsUrl);
-    const planetsList = useSelector(selectPlanetsList);
-    const dispatch = useDispatch();
+  const { planets, error, fetchNextPage, hasNextPage, status } = usePlanets();
 
-    useEffect(() => {
-        if (response !== undefined) {
-            dispatch(setPlanetsList(response.results));
-            console.log(response);
-        }
-    }, [isLoading]);
+  const isLoading = status === "loading";
+  if (status === "error") return <h4>oops!, {`${error}`}</h4>;
 
-    const extractId = (url: any) => {
-        const idRegExp = /\/([0-9]*)\/$/;
-        return url.match(idRegExp)[1];
-    };
+  const extractId = (url: any) => {
+    const idRegExp = /\/([0-9]*)\/$/;
+    return url.match(idRegExp)[1];
+  };
 
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //       if (
-    //         window.innerHeight + window.scrollY >= document.body.offsetHeight
-    //       ) {
-    //         const nextPage = page + 1;
-    //         fetchNextCharacters(nextPage).then((newCharacters) => {
-    //           setCharacters((prevCharacters) => [
-    //             ...prevCharacters,
-    //             ...newCharacters,
-    //           ]);
-    //           setPage(nextPage);
-    //         });
-    //       }
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => window.removeEventListener('scroll', handleScroll);
-    //   }, [characters, page]);
-
-    // console.log(response?.results);
-
-    return (
-        <>
-            {" "}
-            <h1 className="page-title">Planets</h1>
-            {isLoading ? (
-                <Preloader />
-            ) : (
-                <>
-                    <ul className="cards-list planets">
-                        {planetsList.map((el: any) => (
-                            <PlanetCard
-                                key={extractId(el.url)}
-                                name={el.name}
-                                planetId={extractId(el.url)}
-                            />
-                        ))}
-                    </ul>
-
-                    <h2>{nextPage}</h2>
-                </>
-            )}
-        </>
-    );
+  return (
+    <>
+      <h1 className="page-title">Planets</h1>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <InfiniteScroll
+          dataLength={planets ? planets.results.length : 0}
+          next={() => fetchNextPage()}
+          hasMore={!!hasNextPage}
+          loader={<p className="load-text">Loading more ...</p>}
+          style={{ overflow: "visible" }}
+        >
+          <ul className="cards-list planets">
+            {!!planets &&
+              planets.results.map((el: any, index: number) => (
+                <PlanetCard
+                  key={extractId(el.url)}
+                  name={el.name}
+                  planetId={extractId(el.url)}
+                />
+              ))}
+          </ul>
+        </InfiniteScroll>
+      )}
+    </>
+  );
 };
 
 export default PlanetsListPage;
