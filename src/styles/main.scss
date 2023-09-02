@@ -95,7 +95,8 @@ header {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    &.planets {
+    &.planets,
+    &.vehicles {
         grid-template-columns: repeat(5, 1fr);
     }
 
