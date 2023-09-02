@@ -154,8 +154,12 @@ footer {
     position: relative;
     background-color: rgba(190, 184, 184, 0.6);
 
-    &.loaded>img {
-        opacity: 1;
+    &.loaded {
+        background-color: transparent;
+
+        >img {
+            opacity: 1;
+        }
     }
 
     &:before {
