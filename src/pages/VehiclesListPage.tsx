@@ -2,12 +2,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import VehicleCard from "../components/cards/VehicleCard";
 import { useVehicles } from "../hooks/useVehicles";
+import { useEffect } from "react";
 
 const VehiclesListPage = () => {
   const { vehicles, error, fetchNextPage, hasNextPage, status } = useVehicles();
 
   const isLoading = status === "loading";
-  if (status === "error") return <h4>oops!, {`${error}`}</h4>;
+  // if (status === "error") return <h4>oops!, {`${error}`}</h4>;
+
+  useEffect(() => console.log(vehicles), [vehicles]);
 
   return (
     <>
@@ -25,7 +28,7 @@ const VehiclesListPage = () => {
           <ul className="cards-list vehicles">
             {!!vehicles &&
               vehicles.results.map((el: any, index: number) => (
-                <VehicleCard key={index} name={el.name} id={index + 1} />
+                <VehicleCard key={index} name={el.name} id={index} />
               ))}
           </ul>
         </InfiniteScroll>

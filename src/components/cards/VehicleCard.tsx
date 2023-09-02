@@ -9,7 +9,7 @@ type VehicleCardProps = {
 const VehicleCard = ({ name, id }: VehicleCardProps) => {
   return (
     <Link to={`/vehicles/${id}`} className="card planet-card">
-      <ImageComponent src={`vehicles/${id}.jpg`} alt={name + " planet"} />
+      <ImageComponent src={`vehicles/${id}.jpg`} alt={name + " vehicle"} />
       <h2>{name}</h2>
     </Link>
   );
