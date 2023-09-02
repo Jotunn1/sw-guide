@@ -1,18 +1,17 @@
 import { ReactElement } from "react";
 
-
-const SocialLink = (props: socialLinkProps) => {
-    return (
-        <a className="social-link" href={props.link} target="_blank">
-            {props.icon} {props.title}
-        </a>
-    );
+type SocialLinkProps = {
+  link: string;
+  title: string;
+  icon: ReactElement;
 };
 
-type socialLinkProps = {
-    link: string;
-    title: string;
-    icon: ReactElement;
+const SocialLink = ({ link, title, icon }: SocialLinkProps) => {
+  return (
+    <a className="social-link" href={link} target="_blank">
+      {icon} {title}
+    </a>
+  );
 };
 
 export default SocialLink;
