@@ -11,7 +11,7 @@ import SpeciesListPage from "./pages/SpeciesListPage";
 import StarshipsListPage from "./pages/StarshipsListPage";
 import VehiclesListPage from "./pages/VehiclesListPage";
 import { useSelector } from "react-redux";
-import { selectTheme } from "./features/theme/ThemeSlice";
+import { selectTheme } from "./features/Theme/ThemeSlice";
 import store from "./store";
 import { saveState } from "./utils/storage";
 import PlanetPage from "./pages/PlanetPage";

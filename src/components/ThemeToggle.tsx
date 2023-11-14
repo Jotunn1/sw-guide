@@ -4,7 +4,7 @@ import {
   changeToDark,
   changeToWhite,
   selectTheme,
-} from "../features/theme/ThemeSlice";
+} from "../features/Theme/ThemeSlice";
 import { useSelector } from "react-redux";
 
 const ThemeToggle = () => {
