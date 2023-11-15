@@ -26,10 +26,10 @@ export const charactersSlice = createSlice({
 
 export const { setActiveCharacter, setCharactersList } =
   charactersSlice.actions;
-export const selectActiveFilm = (state: {
+export const selectActiveCharacter = (state: {
   characters: { activeCharacter: any };
 }) => state.characters.activeCharacter;
-export const selectFilmsList = (state: {
+export const selectCharactersList = (state: {
   characters: { charactersList: any };
 }) => state.characters.charactersList;
 export default charactersSlice.reducer;

@@ -3,10 +3,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import { Character } from "../types";
 import CharacterCard from "../components/cards/CharacterCard";
+import { selectCharactersList } from "../features/Characters/CharactersSlice";
+import { useSelector } from "react-redux";
 
 const CharactersListPage = () => {
   const { characters, error, fetchNextPage, hasNextPage, status } =
     useCharacters();
+  // const characters = useSelector(selectCharactersList);
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;

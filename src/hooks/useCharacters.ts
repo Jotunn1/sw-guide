@@ -1,8 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { setCharactersList } from "../features/Characters/CharactersSlice";
 
 export const useCharacters = () => {
+  const dispatch = useDispatch();
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["characters"],
     ({ pageParam = 1 }) =>
@@ -33,12 +36,16 @@ export const useCharacters = () => {
     [data]
   );
 
+  // useEffect(() => {
+  //   if (characters) dispatch(setCharactersList(characters));
+  // }, [characters]);
+
   return {
+    characters,
     error,
     fetchNextPage,
     status,
     hasNextPage,
-    characters,
     data,
   };
 };
