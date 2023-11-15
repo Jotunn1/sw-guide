@@ -15,41 +15,34 @@ import { selectTheme } from "./features/Theme/ThemeSlice";
 import store from "./store";
 import { saveState } from "./utils/storage";
 import PlanetPage from "./pages/PlanetPage";
+import CharacterPage from "./pages/CharacterPage";
 
 store.subscribe(() => saveState(store.getState()));
 
 function App() {
-    const selectedTheme = useSelector(selectTheme);
-    return (
-        <div className={`App ${selectedTheme}`}>
-            <BrowserRouter>
-                <div className="container">
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route
-                            path="/characters"
-                            element={<CharactersListPage />}
-                        />
-                        <Route path="/planets" element={<PlanetsListPage />} />
-                        <Route path="/planets/:id" element={<PlanetPage />} />
-                        <Route
-                            path="/starships"
-                            element={<StarshipsListPage />}
-                        />
-                        <Route path="/films" element={<FilmsListPage />} />
-                        <Route path="/films/:id" element={<FilmPage />} />
-                        <Route
-                            path="/vehicles"
-                            element={<VehiclesListPage />}
-                        />
-                        <Route path="/species" element={<SpeciesListPage />} />
-                    </Routes>
-                </div>
-                <Footer />
-            </BrowserRouter>
+  const selectedTheme = useSelector(selectTheme);
+  return (
+    <div className={`App ${selectedTheme}`}>
+      <BrowserRouter>
+        <div className="container">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/characters" element={<CharactersListPage />} />
+            <Route path="/characters/:id" element={<CharacterPage />} />
+            <Route path="/planets" element={<PlanetsListPage />} />
+            <Route path="/planets/:id" element={<PlanetPage />} />
+            <Route path="/starships" element={<StarshipsListPage />} />
+            <Route path="/films" element={<FilmsListPage />} />
+            <Route path="/films/:id" element={<FilmPage />} />
+            <Route path="/vehicles" element={<VehiclesListPage />} />
+            <Route path="/species" element={<SpeciesListPage />} />
+          </Routes>
         </div>
-    );
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

@@ -9,21 +9,21 @@ import { useFetch } from "../hooks/useFetch";
 import { Film } from "../types";
 import ImageComponent from "../components/common/ImageComponent";
 
+enum Episodes {
+  I = 4,
+  II = 5,
+  III = 6,
+  IV = 1,
+  V = 2,
+  VI = 3,
+}
+
 const FilmPage = () => {
   const filmId: any = useParams().id;
   const filmUrl = apiURL + "films/" + filmId;
   const { response, isLoading } = useFetch(filmUrl);
   const activeFilm: Film = useSelector(selectActiveFilm);
   const dispatch = useDispatch();
-
-  enum Episodes {
-    I = 4,
-    II = 5,
-    III = 6,
-    IV = 1,
-    V = 2,
-    VI = 3,
-  }
 
   useEffect(() => {
     if (response !== undefined) {
