@@ -2,14 +2,14 @@ import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { setCharactersList } from "../features/Characters/CharactersSlice";
+import { setFilmsList } from "../features/Films/FilmsSlice";
 
-export const useCharacters = () => {
+export const useFilms = () => {
   const dispatch = useDispatch();
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
-    ["characters"],
+    ["films"],
     ({ pageParam = 1 }) =>
-      fetch(`${apiURL}people/?page=${pageParam}`).then((res) => res.json()),
+      fetch(`${apiURL}films/?page=${pageParam}`).then((res) => res.json()),
     {
       getNextPageParam: (lastPage) => {
         if (lastPage.next) {
@@ -25,7 +25,7 @@ export const useCharacters = () => {
     }
   );
 
-  const characters = useMemo(
+  const films = useMemo(
     () =>
       data?.pages.reduce((prev, page) => {
         return {
@@ -37,11 +37,11 @@ export const useCharacters = () => {
   );
 
   useEffect(() => {
-    if (characters) dispatch(setCharactersList(characters.results));
-  }, [characters]);
+    if (films) dispatch(setFilmsList(films.results));
+  }, [films]);
 
   return {
-    characters,
+    films,
     error,
     fetchNextPage,
     status,

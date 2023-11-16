@@ -6,18 +6,14 @@ import { useFetch } from "../hooks/useFetch";
 import Preloader from "../components/Preloader";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFilmsList, setFilmsList } from "../features/Films/FilmsSlice";
+import { useFilms } from "../hooks/useFilms";
 
 const FilmsListPage = () => {
-  const filmsUrl = apiURL + "films/";
-  const { response, isLoading } = useFetch(filmsUrl);
   const filmsList = useSelector(selectFilmsList);
-  const dispatch = useDispatch();
+  const { error, status } = useFilms();
 
-  useEffect(() => {
-    if (response !== undefined && filmsList.length === 0) {
-      dispatch(setFilmsList(response.results));
-    }
-  }, [isLoading]);
+  const isLoading = status === "loading";
+  if (status === "error") return <h4>oops!, {`${error}`}</h4>;
 
   return (
     <>
