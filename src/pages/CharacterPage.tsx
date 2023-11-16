@@ -38,7 +38,7 @@ const CharacterPage = () => {
           />
           <div className="right-side">
             <h1>{activeCharacter.name}</h1>
-          </div>{" "}
+          </div>
         </>
       )}
     </div>
