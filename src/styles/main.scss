@@ -96,7 +96,9 @@ header {
     }
 
     &.planets,
-    &.vehicles {
+    &.vehicles,
+    &.species,
+    &.starships {
         grid-template-columns: repeat(5, 1fr);
     }
 
