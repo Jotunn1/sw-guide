@@ -41,7 +41,6 @@ export const useFilms = () => {
   }, [films]);
 
   return {
-    films,
     error,
     fetchNextPage,
     status,

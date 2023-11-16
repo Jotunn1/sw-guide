@@ -10,13 +10,11 @@ export const useStarships = () => {
     {
       getNextPageParam: (lastPage) => {
         if (lastPage.next) {
-          const previousPage = lastPage.previous
-            ? +lastPage.previous.split("=")[1]
-            : 0;
-          const currentPage = previousPage + 1;
-
-          if (currentPage === lastPage.pages) return false;
-          return currentPage + 1;
+          const urlSearchParams = new URLSearchParams(
+            new URL(lastPage.next).search
+          );
+          const nextPage = urlSearchParams.get("page");
+          return nextPage ? Number(nextPage) : false;
         }
       },
     }
