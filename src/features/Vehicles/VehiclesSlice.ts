@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Vehicle } from "../../types";
 
-interface PlanetsState {
+interface VehiclesState {
   vehiclesList: Vehicle[] | [];
   activeVehicle: Vehicle | {};
 }
 
-const initialState: PlanetsState = {
+const initialState: VehiclesState = {
   vehiclesList: [],
   activeVehicle: {},
 };
@@ -16,7 +16,6 @@ export const vehiclesSlice = createSlice({
   initialState,
   reducers: {
     setVehiclesList: (state, action) => {
-      // console.log(action.payload, "vehicles from redux");
       state.vehiclesList = [...action.payload];
     },
     setActiveVehicle: (state, action) => {
@@ -29,6 +28,7 @@ export const { setActiveVehicle, setVehiclesList } = vehiclesSlice.actions;
 export const selectActiveVehicle = (state: {
   vehicles: { activeVehicle: any };
 }) => state.vehicles.activeVehicle;
-export const selectPlanetsList = (state: { vehicles: { vehiclesList: any } }) =>
-  state.vehicles.vehiclesList;
+export const selectVehiclesList = (state: {
+  vehicles: { vehiclesList: any };
+}) => state.vehicles.vehiclesList;
 export default vehiclesSlice.reducer;

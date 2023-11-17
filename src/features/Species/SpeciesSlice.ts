@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Specie } from "../../types";
 
-interface PlanetsState {
+interface SpeciesState {
   speciesList: Specie[] | [];
   activeSpecie: Specie | {};
 }
 
-const initialState: PlanetsState = {
+const initialState: SpeciesState = {
   speciesList: [],
   activeSpecie: {},
 };
@@ -16,7 +16,6 @@ export const speciesSlice = createSlice({
   initialState,
   reducers: {
     setSpeciesList: (state, action) => {
-      // console.log(action.payload, "speciess from redux");
       state.speciesList = [...action.payload];
     },
     setActiveSpecie: (state, action) => {
