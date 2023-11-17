@@ -1,8 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { setVehiclesList } from "../features/Vehicles/VehiclesSlice";
+import { useDispatch } from "react-redux";
 
 export const useVehicles = () => {
+  const dispatch = useDispatch();
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["vehicles"],
     ({ pageParam = 1 }) =>
@@ -31,12 +34,14 @@ export const useVehicles = () => {
     [data]
   );
 
+  useEffect(() => {
+    if (vehicles) dispatch(setVehiclesList(vehicles.results));
+  }, [vehicles]);
+
   return {
     error,
     fetchNextPage,
     status,
     hasNextPage,
-    vehicles,
-    data,
   };
 };

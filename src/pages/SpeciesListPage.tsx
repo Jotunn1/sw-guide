@@ -2,9 +2,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import { useSpecies } from "../hooks/useSpecies";
 import SpecieCard from "../components/cards/SpecieCard";
+import { useSelector } from "react-redux";
+import { selectSpeciesList } from "../features/Species/SpeciesSlice";
 
 const SpeciesListPage = () => {
-  const { species, error, fetchNextPage, hasNextPage, status } = useSpecies();
+  const { error, fetchNextPage, hasNextPage, status } = useSpecies();
+  const species = useSelector(selectSpeciesList);
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;

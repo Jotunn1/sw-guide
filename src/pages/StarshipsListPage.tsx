@@ -2,17 +2,19 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import StarshipCard from "../components/cards/StarshipCard";
 import { useStarships } from "../hooks/useStarships";
+import { useSelector } from "react-redux";
+import { selectStarshipsList } from "../features/Starships/StarshipsSlice";
 
 const StarshipsListPage = () => {
-  const { starships, error, fetchNextPage, hasNextPage, status } =
-    useStarships();
+  const { error, fetchNextPage, hasNextPage, status } = useStarships();
+  const starships = useSelector(selectStarshipsList);
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;
 
   return (
     <>
-      <h1 className="page-title">starships</h1>
+      <h1 className="page-title">Starships</h1>
       {isLoading ? (
         <Preloader />
       ) : (

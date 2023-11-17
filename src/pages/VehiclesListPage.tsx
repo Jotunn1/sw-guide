@@ -3,14 +3,15 @@ import Preloader from "../components/Preloader";
 import VehicleCard from "../components/cards/VehicleCard";
 import { useVehicles } from "../hooks/useVehicles";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectVehiclesList } from "../features/Vehicles/VehiclesSlice";
 
 const VehiclesListPage = () => {
-  const { vehicles, error, fetchNextPage, hasNextPage, status } = useVehicles();
+  const { error, fetchNextPage, hasNextPage, status } = useVehicles();
+  const vehicles = useSelector(selectVehiclesList);
 
   const isLoading = status === "loading";
-  // if (status === "error") return <h4>oops!, {`${error}`}</h4>;
-
-  useEffect(() => console.log(vehicles), [vehicles]);
+  if (status === "error") return <h4>oops!, {`${error}`}</h4>;
 
   return (
     <>

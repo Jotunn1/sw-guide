@@ -1,8 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { setStarshipsList } from "../features/Starships/StarshipsSlice";
 
 export const useStarships = () => {
+  const dispatch = useDispatch();
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["starships"],
     ({ pageParam = 1 }) =>
@@ -31,12 +34,14 @@ export const useStarships = () => {
     [data]
   );
 
+  useEffect(() => {
+    if (starships) dispatch(setStarshipsList(starships.results));
+  }, [starships]);
+
   return {
     error,
     fetchNextPage,
     status,
     hasNextPage,
-    starships,
-    data,
   };
 };

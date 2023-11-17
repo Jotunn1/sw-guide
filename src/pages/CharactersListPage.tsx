@@ -7,9 +7,8 @@ import { selectCharactersList } from "../features/Characters/CharactersSlice";
 import { useSelector } from "react-redux";
 
 const CharactersListPage = () => {
-  const { characters, error, fetchNextPage, hasNextPage, status } =
-    useCharacters();
-  // const characters = useSelector(selectCharactersList);
+  const { error, fetchNextPage, hasNextPage, status } = useCharacters();
+  const characters = useSelector(selectCharactersList);
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;

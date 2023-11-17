@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Starship } from "../../types";
 
 interface StarshipsState {
-  StarshipsList: Starship[] | [];
+  starshipsList: Starship[] | [];
   activeStarship: Starship | {};
 }
 
 const initialState: StarshipsState = {
-  StarshipsList: [],
+  starshipsList: [],
   activeStarship: {},
 };
 
@@ -16,7 +16,7 @@ export const StarshipsSlice = createSlice({
   initialState,
   reducers: {
     setStarshipsList: (state, action) => {
-      state.StarshipsList = [...action.payload];
+      state.starshipsList = [...action.payload];
     },
     setActiveStarship: (state, action) => {
       state.activeStarship = action.payload;
@@ -29,6 +29,6 @@ export const selectActiveStarship = (state: {
   starships: { activeStarship: any };
 }) => state.starships.activeStarship;
 export const selectStarshipsList = (state: {
-  starships: { StarshipsList: any };
-}) => state.starships.StarshipsList;
+  starships: { starshipsList: any };
+}) => state.starships.starshipsList;
 export default StarshipsSlice.reducer;

@@ -39,11 +39,9 @@ export const useCharacters = () => {
   }, [characters]);
 
   return {
-    characters,
     error,
     fetchNextPage,
     status,
     hasNextPage,
-    data,
   };
 };

@@ -36,7 +36,5 @@ export const useSpecies = () => {
     fetchNextPage,
     status,
     hasNextPage,
-    species,
-    data,
   };
 };

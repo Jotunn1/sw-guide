@@ -1,8 +1,11 @@
 import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { setPlanetsList } from "../features/Planets/PlanetsSlice";
 
 export const usePlanets = () => {
+  const dispatch = useDispatch();
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["planets"],
     ({ pageParam = 1 }) =>
@@ -31,12 +34,14 @@ export const usePlanets = () => {
     [data]
   );
 
+  useEffect(() => {
+    if (planets) dispatch(setPlanetsList(planets.results));
+  }, [planets]);
+
   return {
     error,
     fetchNextPage,
     status,
     hasNextPage,
-    planets,
-    data,
   };
 };

@@ -1,11 +1,8 @@
-import { useEffect } from "react";
-import { apiURL } from "../api";
 import FilmCard from "../components/cards/FilmCard";
 import { Film } from "../types";
-import { useFetch } from "../hooks/useFetch";
 import Preloader from "../components/Preloader";
-import { useSelector, useDispatch } from "react-redux";
-import { selectFilmsList, setFilmsList } from "../features/Films/FilmsSlice";
+import { useSelector } from "react-redux";
+import { selectFilmsList } from "../features/Films/FilmsSlice";
 import { useFilms } from "../hooks/useFilms";
 
 const FilmsListPage = () => {

@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
 import Preloader from "../components/Preloader";
 import PlanetCard from "../components/cards/PlanetCard";
 import { usePlanets } from "../hooks/usePlanets";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { selectPlanetsList } from "../features/Planets/PlanetsSlice";
 
 const PlanetsListPage = () => {
-  const { planets, error, fetchNextPage, hasNextPage, status } = usePlanets();
+  const planets = useSelector(selectPlanetsList);
+  const { error, fetchNextPage, hasNextPage, status } = usePlanets();
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;

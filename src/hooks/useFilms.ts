@@ -45,6 +45,5 @@ export const useFilms = () => {
     fetchNextPage,
     status,
     hasNextPage,
-    data,
   };
 };
