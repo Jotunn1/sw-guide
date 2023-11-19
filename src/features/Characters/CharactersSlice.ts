@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Character } from "../../types";
 
 interface CharactersState {
-  charactersList: Character[] | [];
+  charactersList: Character[] | null;
   activeCharacter: Character | {};
 }
 
 const initialState: CharactersState = {
-  charactersList: [],
+  charactersList: null,
   activeCharacter: {},
 };
 

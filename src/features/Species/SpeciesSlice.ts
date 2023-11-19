@@ -26,8 +26,8 @@ export const speciesSlice = createSlice({
 
 export const { setActiveSpecie, setSpeciesList } = speciesSlice.actions;
 export const selectActiveSpecie = (state: {
-  speciess: { activespecies: any };
-}) => state.speciess.activespecies;
-export const selectSpeciesList = (state: { speciess: { speciesList: any } }) =>
-  state.speciess.speciesList;
+  species: { activespecies: any };
+}) => state.species.activespecies;
+export const selectSpeciesList = (state: { species: { speciesList: any } }) =>
+  state.species.speciesList;
 export default speciesSlice.reducer;

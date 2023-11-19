@@ -5,13 +5,18 @@ import { Character } from "../types";
 import CharacterCard from "../components/cards/CharacterCard";
 import { selectCharactersList } from "../features/Characters/CharactersSlice";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const CharactersListPage = () => {
   const { error, fetchNextPage, hasNextPage, status } = useCharacters();
   const characters = useSelector(selectCharactersList);
 
   const isLoading = status === "loading";
-  if (status === "error") return <h4>oops!, {`${error}`}</h4>;
+  // if (status === "error") return <h4>oops!, {`${error}`}</h4>;
+
+  useEffect(() => {
+    console.log(characters);
+  }, [characters]);
 
   return (
     <>
@@ -28,7 +33,7 @@ const CharactersListPage = () => {
         >
           <ul className="cards-list characters">
             {!!characters &&
-              characters.results.map((el: Character, index: number) => (
+              characters?.results?.map((el: Character, index: number) => (
                 <CharacterCard name={el.name} id={index + 1} key={index} />
               ))}
           </ul>
