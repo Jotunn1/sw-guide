@@ -2,7 +2,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Preloader from "../components/Preloader";
 import VehicleCard from "../components/cards/VehicleCard";
 import { useVehicles } from "../hooks/useVehicles";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectVehiclesList } from "../features/Vehicles/VehiclesSlice";
 
@@ -20,7 +19,7 @@ const VehiclesListPage = () => {
         <Preloader />
       ) : (
         <InfiniteScroll
-          dataLength={vehicles ? vehicles.results.length : 0}
+          dataLength={vehicles ? vehicles.length : 0}
           next={() => fetchNextPage()}
           hasMore={!!hasNextPage}
           loader={<p className="load-text">Loading more ...</p>}
@@ -28,7 +27,7 @@ const VehiclesListPage = () => {
         >
           <ul className="cards-list vehicles">
             {!!vehicles &&
-              vehicles.results.map((el: any, index: number) => (
+              vehicles?.map((el: any, index: number) => (
                 <VehicleCard key={index} name={el.name} id={index} />
               ))}
           </ul>

@@ -5,9 +5,10 @@ import { useStarships } from "../hooks/useStarships";
 import { useSelector } from "react-redux";
 import { selectStarshipsList } from "../features/Starships/StarshipsSlice";
 
+
 const StarshipsListPage = () => {
-  const { error, fetchNextPage, hasNextPage, status } = useStarships();
   const starships = useSelector(selectStarshipsList);
+  const { error, fetchNextPage, hasNextPage, status } = useStarships();
 
   const isLoading = status === "loading";
   if (status === "error") return <h4>oops!, {`${error}`}</h4>;
@@ -19,7 +20,7 @@ const StarshipsListPage = () => {
         <Preloader />
       ) : (
         <InfiniteScroll
-          dataLength={starships ? starships.results.length : 0}
+          dataLength={starships?.length ? starships.length : 0}
           next={() => fetchNextPage()}
           hasMore={!!hasNextPage}
           loader={<p className="load-text">Loading more ...</p>}
@@ -27,7 +28,7 @@ const StarshipsListPage = () => {
         >
           <ul className="cards-list starships">
             {!!starships &&
-              starships.results.map((el: any, index: number) => (
+              starships?.map((el: any, index: number) => (
                 <StarshipCard key={index} name={el.name} id={index + 1} />
               ))}
           </ul>

@@ -24,7 +24,7 @@ const PlanetsListPage = () => {
         <Preloader />
       ) : (
         <InfiniteScroll
-          dataLength={planets ? planets.results.length : 0}
+          dataLength={planets?.results ? planets.results : 0}
           next={() => fetchNextPage()}
           hasMore={!!hasNextPage}
           loader={<p className="load-text">Loading more ...</p>}
@@ -32,7 +32,7 @@ const PlanetsListPage = () => {
         >
           <ul className="cards-list planets">
             {!!planets &&
-              planets.results.map((el: any, index: number) => (
+              planets.map((el: any, index: number) => (
                 <PlanetCard
                   key={extractId(el.url)}
                   name={el.name}

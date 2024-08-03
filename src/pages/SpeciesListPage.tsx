@@ -19,7 +19,7 @@ const SpeciesListPage = () => {
         <Preloader />
       ) : (
         <InfiniteScroll
-          dataLength={species ? species.results.length : 0}
+          dataLength={species?.length ? species.length : 0}
           next={() => fetchNextPage()}
           hasMore={!!hasNextPage}
           loader={<p className="load-text">Loading more ...</p>}
@@ -27,7 +27,7 @@ const SpeciesListPage = () => {
         >
           <ul className="cards-list species">
             {!!species &&
-              species.results.map((el: any, index: number) => (
+              species?.map((el: any, index: number) => (
                 <SpecieCard key={index} name={el.name} id={index + 1} />
               ))}
           </ul>
