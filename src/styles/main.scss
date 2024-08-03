@@ -90,17 +90,19 @@ header {
     display: grid;
     gap: 20px;
 
-    &.films,
-    &.characters {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    grid-template-columns: repeat(4, 1fr);
 
-    &.planets,
-    &.vehicles,
-    &.species,
-    &.starships {
-        grid-template-columns: repeat(5, 1fr);
-    }
+    // &.films,
+    // &.characters {
+    //     grid-template-columns: repeat(4, 1fr);
+    // }
+
+    // &.planets,
+    // &.vehicles,
+    // &.species,
+    // &.starships {
+    //     grid-template-columns: repeat(5, 1fr);
+    // }
 
     >.film-card {
         opacity: 0;
