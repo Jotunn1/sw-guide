@@ -11,7 +11,7 @@ const initialState: StarshipsState = {
   activeStarship: {},
 };
 
-export const StarshipsSlice = createSlice({
+export const starshipsSlice = createSlice({
   name: "starships",
   initialState,
   reducers: {
@@ -24,11 +24,12 @@ export const StarshipsSlice = createSlice({
   },
 });
 
-export const { setActiveStarship, setStarshipsList } = StarshipsSlice.actions;
+export const { setActiveStarship, setStarshipsList } = starshipsSlice.actions;
+export const selectStarshipsList = (state: {
+  starships: { starshipsList:  Starship[] };
+}) => state.starships.starshipsList;
 export const selectActiveStarship = (state: {
   starships: { activeStarship: any };
 }) => state.starships.activeStarship;
-export const selectStarshipsList = (state: {
-  starships: { starshipsList: any };
-}) => state.starships.starshipsList;
-export default StarshipsSlice.reducer;
+
+export default starshipsSlice.reducer;
