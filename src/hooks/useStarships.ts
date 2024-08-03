@@ -6,6 +6,7 @@ import { setStarshipsList } from "../features/Starships/StarshipsSlice";
 
 export const useStarships = () => {
   const dispatch = useDispatch();
+
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["starships"],
     ({ pageParam = 1 }) =>

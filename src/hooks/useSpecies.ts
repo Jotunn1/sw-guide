@@ -1,8 +1,12 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { apiURL } from "../api";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { setSpeciesList } from "../features/Species/SpeciesSlice";
 
 export const useSpecies = () => {
+  const dispatch= useDispatch();
+
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["species"],
     ({ pageParam = 1 }) =>
@@ -30,6 +34,10 @@ export const useSpecies = () => {
       }),
     [data]
   );
+
+  useEffect(() => {
+    if(species) dispatch(setSpeciesList(species.results));
+  }, [species]);
 
   return {
     error,
