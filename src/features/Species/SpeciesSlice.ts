@@ -12,7 +12,7 @@ const initialState: SpeciesState = {
 };
 
 export const speciesSlice = createSlice({
-  name: "speciess",
+  name: "species",
   initialState,
   reducers: {
     setSpeciesList: (state, action) => {
